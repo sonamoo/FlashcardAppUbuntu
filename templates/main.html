@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{url_for('show_courses')}}">Flash Card App</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav">
+                <li><a href="{{url_for('show_courses')}}">View All Courses <span class="sr-only"></span></a></li>
+                <li><a href="{{url_for('show_all_cards')}}">View All Cards</a></li>
+                {% if user%}
+                <li><a href="{{url_for('show_memorized_cards',user_id=user.id)}}">My Memorized Cards</a></li>
+                {% endif %}
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if user %}
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
+                {% else %}
+                <li><a href="{{url_for('login')}}">Login</a></li>
+                {% endif %}
+                {% if user %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"> {{user.username}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{url_for('my_courses', user_id=user.id)}}">My Courses</a></li>
+                        <li><a href="{{url_for('my_cards', user_id=user.id)}}">My Cards</a></li>
+                        <li><a href="{{url_for('show_memorized_cards', user_id=user.id)}}">Memorized Cards</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<section>
+    <div class="container">
+        <div class="main-section">
+        {% block content %}
+        {% endblock %}
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="footer-nav col-xs-12 col-sm-12 col-md-12">
+                <a href="https://www.linkedin.com/in/ericlimchicago">Created by Eric Lim</a><br><br>
+                <a href="https://github.com/sonamoo"><img class="profile-icons"
+                                                          src="{{ url_for('static', filename='github-logo.svg') }}"></a>
+                <a href="https://www.linkedin.com/in/ericlimchicago"><img class="profile-icons"
+                                                                          src="{{ url_for('static', filename='linkedin-logo.svg') }}"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.flashcard').on('click', function() {
+            $('.flashcard').toggleClass('flipped');
+            $('.card-detail-name').toggleClass('off');
+            $('.card-detail-description').toggleClass('off');
+        });
+    });
+
+   $(".flash").delay(5000).fadeOut();
+
+</script>
+
+
+</body>
+
+
+</html>

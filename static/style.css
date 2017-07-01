@@ -1,0 +1,223 @@
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+    color: blue;
+}
+
+body {
+    background-color: #f4f7f6;
+    font-size: 15px;
+    max-width: 1600px;
+
+}
+
+.flash {
+    color: #3c763d;
+    background-color: #dff0d8;
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-bottom: 10px;
+
+}
+
+
+.main-section {
+    padding: 0 10px;
+    min-height: 500px;
+
+}
+
+.block-space {
+    height: 40px;
+}
+
+.add-course-button {
+    float: right;
+}
+
+#all-cards-names {
+    line-height: 38px;
+}
+
+.courses {
+    margin-top : 10px;
+    border: 1px solid #efefef;
+    padding: 1em;
+    background-color: white;
+    box-shadow: 1px 1px 5px grey;
+}
+
+.created-by {
+    font-size: 15px;
+    color: #5cb85c;
+}
+
+.created-on {
+    font-size: 12px;
+    color: gray;
+}
+
+
+.edit-delete {
+    float: right;
+    padding-left: 10px;
+}
+
+.flashcard {
+    border: 1px solid black;
+    min-height: 300px;
+    background-color: white;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 20px;
+    box-shadow: 1px 1px 10px #000;
+    transition: all 0.3s;
+}
+
+
+.flipped, .card-detail-description{
+    transform: rotateX(180deg);
+}
+
+.flipped {
+    box-shadow: 1px -1px 10px #000;
+}
+
+.card-detail-created {
+    margin-bottom: 15px;
+}
+
+.card-detail-name {
+    font-size: 30px;
+}
+
+.card-detail-description {
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.off {
+    display: none;
+}
+
+.previous-div, .next-div {
+    display: none;
+}
+
+
+.previous-next-buttons-div {
+    width: 200px;
+    margin: 10px auto;
+    text-align: center;
+    display: block;
+}
+
+
+
+.previous-button {
+    margin-right: 24px;
+}
+
+.previous-button, .next-button {
+    font-size: 25px;
+}
+
+.other-cards {
+
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 3em;
+
+}
+
+
+
+.profile-icons {
+    width : 35px;
+    margin : 0 10px;
+}
+
+.learn-more-alert {
+    text-align: center;
+    width: 100%;
+}
+
+
+.memorized-delete-buttons-div {
+    text-align: right;
+}
+
+
+footer {
+    background: linear-gradient(to bottom right, #F7F7F7, #EAFBFF);
+    min-height: 200px;
+    padding: 20px;
+    text-align: center;
+
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 2000px) {
+    .next-button, .previous-button{
+        font-size: 20px;
+    }
+
+    .previous-div, .next-div {
+        margin-top: 10px;
+        border: 1px solid #efefef;
+        min-height: 300px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .previous-next-buttons-div {
+        display: none;
+    }
+
+
+    .main-section {
+        max-width: 700px;
+        min-height: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 1px 1px 10px #000;
+        margin-bottom: 30px;
+    }
+
+    .card-detail-created {
+        padding: 0 37px;
+        margin-bottom: 20px;
+    }
+
+    .flashcard {
+        border: 1px solid black;
+        min-height: 300px;
+        max-width: 500px;
+        margin: 0 auto;
+        border: 1px solid gray;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 20px;
+        box-shadow: 1px 1px 10px #000;
+        transition: all 0.3s;
+    }
+}

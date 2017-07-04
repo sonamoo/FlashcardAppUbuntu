@@ -79,7 +79,7 @@ class MemorizedCard(Base):
     course_id = Column(Integer, ForeignKey('course.id'))
 
 
-engine = create_engine('sqlite:///flashcard.db')
+engine = create_engine('postgresql://catalog:catalog@localhost/flashcard')
 Base.metadata.create_all(engine)
 
 

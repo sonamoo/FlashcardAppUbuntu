@@ -21,14 +21,14 @@ import json
 
 app = Flask(__name__)
 
-engine = create_engine('sqlite:///flashcard.db')
+engine = create_engine('postgresql://catalog:catalog@localhost/flashcard')
 
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 
 session = DBSession()
 CLIENT_ID = json.loads(
-    open('client_secret.json', 'r').read())['web']['client_id']
+    open('/var/www/FlashcardApp/FlashcardApp/client_secret.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = 'flashcardapp'
 
 
@@ -562,21 +562,16 @@ def memorized_card(course_id, card_id):
     course = session.query(Course).filter_by(id=course_id).one()
     card = session.query(Card).filter_by(id=card_id).one()
     user_id = get_user_id(login_session)
-    # Check if the user owns the card.
-    if user_id == card.user_id:
-        # create memorized card.
-        learned_card = MemorizedCard(name=card.name,
-                                     description=card.description,
-                                     user_id=user_id,
-                                     course_id=course_id,
-                                     card_id=card_id)
-        session.add(learned_card)
-        session.commit()
-        flash("Memorized %s!" % card.name)
-        return redirect(url_for('card_detail',
-                                course_id=course.id, card_id=card.id))
-    else:
-        return "You are not authorized to do this task."
+    learned_card = MemorizedCard(name=card.name,
+ 				description=card.description,
+				user_id=user_id,
+				course_id=course_id,
+				card_id=card_id)
+    session.add(learned_card)
+    session.commit()
+    flash("Memorized %s!" % card.name)
+    return redirect(url_for('card_detail',
+			course_id=course.id, card_id=card.id))
 
 
 @app.route('/courses/<int:course_id>/<int:card_id>/cancelMemorized')
@@ -627,7 +622,6 @@ def show_memorized_cards(user_id):
         return "you are not authorized to see this page"
 
 if __name__ == "__main__":
-    app.run()
     app.secret_key = 'supersecretkey'
     app.debug = True
-
+    app.run()

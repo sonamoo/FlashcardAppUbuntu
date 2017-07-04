@@ -15,7 +15,7 @@
             {% for card in card_dict['cards'] %}
             <tr>
                 <td style="width: 60%">{{card.name}}{{card.id}}{{card.card_id}}{{card.course_id}}{{card.user_id}}</td>
-                <td style="width: 40%">{{card.created_on}}</td>
+                <td style="width: 40%">{{card.created_on.strftime('%Y-%m-%d')}}</td>
             </tr>
             {% endfor %}
         </table>

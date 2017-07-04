@@ -30,7 +30,7 @@
 <div class="row">
     <div class="col-md-offset-1 col-md-11 col-sm-offset-1 col-sm-12 card-detail-created" >
         Created by: <span class="created-by">{{card.created_by}}</span><br>
-        Created_on: <span class="created-by">{{card.created_on}}</span>
+        Created_on: <span class="created-by">{{card.created_on.strftime('%Y-%m-%d')}}</span>
     </div>
     <div class="col-sm-1 col-md-1">
         <a style="display:block" href="{{url_for('card_detail', course_id=course.id, card_id=cards_id_list[card_index-1] )}}">

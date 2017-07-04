@@ -3,10 +3,11 @@ This Flask application help people to create collective flashcards and learn thi
 
 ## Components
 - Flask
+- PostgreSQL
 - SQLAlchemy
 - Google Sign-In
 - Bootstrap
 - JQuery
 
-## Current Running Web App
-- https://blooming-sierra-29187.herokuapp.com/courses/
+## Current App
+- http://ec2-13-59-188-21.us-east-2.compute.amazonaws.com
